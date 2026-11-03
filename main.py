@@ -2,9 +2,11 @@ import asyncio
 from pathlib import Path
 import pygame
 
+# Change these settings to give your game its own look and feel.
 WIDTH, HEIGHT = 900, 600
 BASE_DIR = Path(__file__).parent
 ASSET_DIR = BASE_DIR / "assets"
+TEXT_DIR = BASE_DIR / "text"
 
 
 class NPC:
@@ -31,9 +33,8 @@ class Bell:
 
 
 class Food:
-    def __init__(self, name, description):
+    def __init__(self, name):
         self.name = name
-        self.description = description
 
 class Room:
     def __init__(self, name, description, enter_sound=None):
@@ -92,7 +93,7 @@ class TextAdventure:
             "Behli Commons",
             "the living room of campus")
         clurg = Room(
-            "You are in Mclurg Dining Hall",
+            "You are in McClurg Dining Hall",
             "The smell of fresh food and the view of rows of completely empty tables, and the usual sounds of conversation and dishes are gone. The food stations are still up around the room, making the silence feel even stranger. Near the entrance, one person sits at a desk with computers and an ID scanner, waiting he adons a name tag stating his name is Jack.")
         svfd = Room(
             "Sewanee Fire Station",
@@ -126,7 +127,7 @@ class TextAdventure:
             "The War Memorial Cross",
             "The Most Beautiful Place on the Domain")
         homestyle = Room(
-            "the Homestyle line today we are serving, Halal Baked Chicken, Jerk Pork Chops, Basmati Ride, Steamed Green Beans, and Local Sauteed Squash. Make sure you go check out the Pasta line!", "")
+            "the Homestyle line today we are serving, Halal Baked Chicken, Jerk Pork Chops, Basmati Rice, Steamed Green Beans, and Local Sauteed Squash. Make sure you go check out the Pasta line!", "")
         pasta = Room(
             "the Pasta line today we are serving, Daily Pasta, Halal Chicken, Meatballs, Alfredo Sauce, and Marinara Sauce. Make sure you go check out the Vegan line!", "")
         vegan = Room(
@@ -214,6 +215,14 @@ class TextAdventure:
         #add bell
         breslin.bell = Bell("bell", 1)
 
+        #add food
+        homestyle.food.extend([
+            Food("chicken"),
+            Food("pork"),
+            Food("rice"),
+            Food("beans"),
+            Food("squash")])
+
         quad.treasure.extend([
             Treasure("diamond", "text here", 1),
             Treasure("coin", "Text here", 1),])
@@ -268,9 +277,8 @@ class TextAdventure:
                 self.say(f"Your score is now {self.score} out of 16.")
                 npc.value = 0
            if self.score == 16:
-                self.say("YOU WIN!")
+                self.say("Go to cross!")
                 self.play_sound("win")
-                self.game_over = True
            return self.current_room.npc == True
         else:
             self.say(f"There is no one with that name talk to here.")
@@ -284,13 +292,14 @@ class TextAdventure:
                 self.say(f"You take the {treasure.name}.")
                 self.say(f"Your score is now {self.score} out of 16.")
                 if self.score == 16:
-                    self.say("YOU WIN!")
+                    self.say("Go to cross riddle")
                     self.play_sound("win")
                     pygame.mixer.music.stop()
-                    self.game_over = True
                 return
-        else:
-            self.say(f"There is no {name} here.")
+        for food in self.current_room.food:
+            if food.name == name:
+                self.say(f"Great Choice!")
+
 
     def read(self, name):
         book = self.current_room.book
@@ -310,12 +319,11 @@ class TextAdventure:
                 self.say(f"Your score is now {self.score} out of 16.")
                 bell.value = 0
             if self.score == 16:
-                self.say("YOU WIN!")
+                self.say("Go to cross!")
                 self.play_sound("win")
-                self.game_over = True
             return self.current_room.bell == True
        else:
-            self.say(f"There is no one with that name talk to here.")
+            self.say(f"There is no bell to ring here.")
 
     def handle_command(self, line):
         self.say(f"> {line}")
@@ -355,15 +363,12 @@ class TextAdventure:
                 self.play_sound("pickup")
                 self.say(f"Your score is now {self.score} out of 16.")
             if self.score == 16:
-                self.say("YOU WIN!")
+                self.say("Go to Cross!")
                 self.play_sound("win")
-                self.game_over = True
         elif command == "1857":
             self.say("The doors creak open as you step foot inside the tower. You see an ornate spiral staircase that looks like it is going to break as soon as you put on foot on the first stair rung. The stairs look like they lead to a trapped door. You also see a bellman standing in the tower.")
         elif command == "ring" and len(words) > 1:
             self.ring(words[1])
-
-
         else:
             self.say("I don't understand that.")
 
