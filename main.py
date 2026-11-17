@@ -108,7 +108,9 @@ class TextAdventure:
             "bell": pygame.mixer.Sound(ASSET_DIR / "bell.ogg"),
             "door1": pygame.mixer.Sound(ASSET_DIR / "door1.ogg"),
             "door2": pygame.mixer.Sound(ASSET_DIR / "door2.ogg"),
-            "fire": pygame.mixer.Sound(ASSET_DIR / "fire.ogg")
+            "fire": pygame.mixer.Sound(ASSET_DIR / "fire.ogg"),
+            "birds": pygame.mixer.Sound(ASSET_DIR / "birds.ogg"),
+            "flame": pygame.mixer.Sound(ASSET_DIR / "flame.ogg")
         }
 
         #add Rooms
@@ -117,19 +119,19 @@ class TextAdventure:
             "The sheer scale of the gothic architecture presses in: soaring stone archways stretch upward, gorgeous stained glass glows as the sun hits the windows at the right angle, and the ambient scent of old hymnals and polished wood fills your lungs. Your attention fades from the building towards the organist.")
         quad = Room(
             "The Quad",
-            "You step onto the Quad, a wide grassy space surrounded by Sewanee’s stone buildings. With the campus empty, the paths and benches are completely still, making the Quad feel peaceful but a little strange. A few benches sit beneath the trees, and academic buildings surround the open lawn. On one bench, you notice a single person with a notebook beside a small sign that reads “Riddle of the Day“. There is also a painter who is hard a work on her next piece")
+            "You step onto the Quad, a wide grassy space surrounded by Sewanee’s stone buildings. With the campus empty, the paths and benches are completely still, making the Quad feel peaceful but a little strange. A few benches sit beneath the trees, and academic buildings surround the open lawn. On one bench, you notice a professor with a notebook beside a small sign that reads “Riddle of the Day“.")
         library = Room(
             "DuPont Library",
             "Walking up to the library you see a stone building with complex architecture, as you walk inside you see piles of colored books everywhere, they are sprawled all over the floor and tables. There is a very flustered Librarian trying to sort through everything.")
         breslin = Room(
             "Breslin Tower",
-            "As you walk up to the front door and you quickly realize the door handles have a chain around them with a lock that has a number key pad. hint: what year was The University of the South founded")
+            "As you walk up to the front door, you quickly realize the door handles have a chain around them with a lock that has a number key pad. HINT: what year was The University of the South founded")
         clurg = Room(
             "McClurg Dining Hall",
             "The smell of fresh food and the view of rows of completely empty tables, and the usual sounds of conversation and dishes are gone. The food stations are still up around the room, making the silence feel even stranger. Near the entrance, one person sits at a desk with computers and an ID scanner, waiting he adons a name tag stating his name is Jack.")
         svfd = Room(
             "Sewanee Volunteer Fire Department Station 1",
-            "As you approach the Sewanee Volunteer Fire Department, you hear the sound of an alarm echoing through the station. Firefighters are rushing around, preparing to respond to an emergency. Before you can take a closer look, someone calls out to you, it's the Fire Chief. “Well, look what we have here! We could use an extra set of hands. We’ve just received a call about a fire at johnson hall. Head over there quick!")
+            "As you approach the Sewanee Volunteer Fire Department, you hear the sound of an alarm echoing through the station. Firefighters are rushing around, preparing to respond to an emergency. Before you can take a closer look, someone calls out to you, it's the Fire Chief. “Well, look what we have here! We could use an extra set of hands. We’ve just received a call about a fire at Johnson Hall. Head over there quick!")
         bishop = Room(
             "Bishop's Common",
             "You approach Bishop Commons and briskly walk inside, excited to see what dorm you will be living in! As you walk inside you follow the signs directing you to talk to the reslife office.")
@@ -138,10 +140,10 @@ class TextAdventure:
             "You arrive at Benny Hall and reach for the main door but its locked. You are prompted to use your key", "door1")
         alley = Room(
             "Abo's Alley",
-            "Hidden in the mountains of Sewanee, Abo’s Ally is a narrow passageway surrounded by thick trees and old stone walls. Locals say strange noises echo through the alley after dark, and students who enter sometimes disappear for hours. As you walk down the path you notice a birdwatcher enjoying the view.")
+            "Hidden in the mountains of Sewanee, Abo’s Ally is a narrow passageway surrounded by thick trees and old stone walls. Locals say strange noises echo through the alley after dark, and students who enter sometimes disappear for hours. As you walk down the path you notice a birdwatcher enjoying the view.", "birds")
         cross = Room(
             "The War Memorial Cross",
-            "Welcome to the War Memorial Cross! This is the most beautiful place on the domain, so beautiful in fact it is said that angels dwell here, and a great place to watch the sunset overlooking the valley. There is no achievement here but rember this place you might want to come back!")
+            "Welcome to the War Memorial Cross! This is the most beautiful place on the domain, so beautiful in fact it is said that angels dwell here, and a great place to watch the sunset overlooking the valley. There is no achievement here but remember this place you might want to come back!")
         homestyle = Room(
             "the Homestyle line today we are serving, Halal Baked Chicken, Jerk Pork Chops, Basmati Rice, Steamed Green Beans, and Local Sauteed Squash. Take one item by typing take and then the name of the item! Make sure you go check out the Pasta line!", "")
         pasta = Room(
@@ -151,13 +153,13 @@ class TextAdventure:
         soup = Room(
             "the Soup line today we are serving, Thai Curry Pork and Cowboy Chili. one you are done go talk to Jack, he always loves to see what people put together!", "")
         desk = Room(
-            "the reception desk. As you walk over to the reception desk you realize you might have bitten off more than you could chew. There is a huge pile that completely covers the desk. The only reason you can see it is the correct spot is because it says Reception Desk on big letters above the pile. There is a mixed array of Red, Orange, and Yellow books. Start off my sorting the books.", "") 
+            "the reception desk. As you walk over to the reception desk you realize you might have bitten off more than you could chew. There is a huge pile that completely covers the desk. The only reason you can see it is the correct spot is because it says 'Reception Desk' in big letters above the pile. There is a mixed array of red, orange, and yellow books. Start off my sorting the books.", "") 
         room = Room(
             "Benny Room 102",
             "You approach a door marked 102 and are prompted to use your key again", "door2")
         johnson = Room(
             "Johnson Hall",
-            "Flames are pouring from the windows of the 100 year old residence hall. A group of students has gathered outside, watching anxiously as smoke rises above the building. The fire engine is ready, and someone hands you hose. Go in and fight fight the fire!")
+            "Flames are pouring from the windows of the 100 year old residence hall. A group of students has gathered outside, watching anxiously as smoke rises above the building. The fire engine is ready, and someone hands you hose. Go in and fight the fire!", "flame")
 
         #add Map
         chaple.add_neighbor("west", quad)
@@ -187,7 +189,7 @@ class TextAdventure:
         alley.add_neighbor("northwest", quad)
         alley.add_neighbor("west", breslin)
         alley.add_neighbor("northeast", clurg)
-        cross.add_neighbor("nortwest", clurg)
+        cross.add_neighbor("northwest", clurg)
         clurg.add_neighbor("homestyle", homestyle)
         homestyle.add_neighbor("pasta", pasta)
         pasta.add_neighbor("vegan", vegan)
@@ -208,19 +210,19 @@ class TextAdventure:
         chaple.npc.append(NPC("organist", "You’re finally awake. You’re in All Saints’ Chapel at Sewanee: the University of the South! This Chapel sits near the center of campus, so it’s a good place to get your bearings. There are four exits out of here: McClurg to the east, the Quad to the west, Abo's Ally to the south, and the firestation to the north; each place has a task for you to complete and you must complete all of the tasks.", 1))
         clurg.npc.append(NPC("jack", "Welcome to McClurg. This is Sewanee’s main dining hall. Campus is empty right now. Usually this place is packed. Since you’re here, I’ve got a challenge for you I’ll give you a meal to put together. You’ll need to find each station that has each part of the meal take one item from Homestyle, Pasta, Salad, and Vegan. Come back and talk to me when you have your meal and your McClurg task is complete. Heres a tip, always start at homestlye.", 0))
         soup.npc.append(NPC("jack", "Would you look at that! That’s quite the spread!! I love the variety from each line! To continue on your adventure head west to get back to All Saints Chapel, southwest to Abo's Alley or southeast to get to the cross", 1))
-        quad.npc.append(NPC("person", "Welcome to the Quad. People usually come out here to study, relax, or just take a break between classes. Your Quad task is simple. Slow down for a minute and solve the riddle of the day: What has many keys but can’t open a single lock? HINT: type guess and then your answer", 0))
+        quad.npc.append(NPC("professor", "Welcome to the Quad. People usually come out here to study, relax, or just take a break between classes. Your Quad task is simple. Slow down for a minute and solve the riddle of the day: What has many keys but can’t open a single lock? HINT: type guess and then your answer", 0))
         quad.npc.append(NPC("painter", "Hey there, welcome to the Quad. I’ve been here for a few hours working on my painting of Breslin Tower. Have you explored inside yet? If not, go have a look. It's an interesting place to the west. What dorm are you in? If you haven’t been to reslife go to bishops commons which is in the west of the library and north of Breslin.", 0))
         breslin.npc.append(NPC("bellman", "Welcome to Breslin Tower, trust me the stairs are not going to break. They may look like they are a thousand years old but they’ve been holding me up for the past 20 years. To get your achievement you have to ring the bell! ", 0))
-        bishop.npc.append(NPC("reslife", "Welcome to Sewanee! You are Alex Grant right? Ive got your room key and student id right here! you will be living in Benidict Hall, or as most students call it benny! Take your key and head west to get to Benidict Hall!", 0))
-        alley.npc.append(NPC("birdwatcher", "Hi there my name is Abby and I am a bird watcher want to hear a riddle? I have wings but I’m not a plane. I can repeat what you say, but I am not a person. What am I?", 0))
-        library.npc.append(NPC("librarian", "Hey there, welcome to the DuPont Library. I am so sorry this place looks like a tornado just came through here! Everyone had their midterm so everyone was studying here for either their exams or writing their papers! Do you mind helping me sort these by color? Everything is organized by color so no need to worry about the subject or content, you just need to know the rainbow! Why don’t you work on the pile on the reception desk? The way this works: Red: Basement, Orange: 1st Floor, and Yellow: 2nd Floor. Just bring the correct colored book to the right floor and once you're done check in with me. Head over to the desk to get started", 0))
+        bishop.npc.append(NPC("reslife", "Welcome to Sewanee! You are Alex Grant right? I've got your room key and student id right here! you will be living in Benidict Hall, or as most students call it Benny! First take your key and then head west to get to Benidict Hall!", 0))
+        alley.npc.append(NPC("birdwatcher", "Hi there my name is Abby and I am a birdwatcher want to hear a riddle? I have wings but I’m not a plane. I can repeat what you say, but I am not a person. What am I?", 0))
+        library.npc.append(NPC("librarian", "Hey there, welcome to the DuPont Library. I am so sorry this place looks like a tornado just came through here! Everyone had their midterm so everyone was studying here for either their exams or writing their papers! Do you mind helping me sort these by color? Everything is organized by color so no need to worry about the subject or content, you just need to know the rainbow! Why don’t you work on the pile on the reception desk? The way this works: Red: Basement, Orange: 1st Floor, and Yellow: 2nd Floor. Just bring the correct colored book to the right floor and once you're done check in with me. Head over to the desk to get started.", 0))
         desk.npc.append(NPC("librarian", "You did it and the Reception Desk looks so nice and clean now! Bishops Commons is to the West of the Library, and the Quad is South and the Fire Station is east.", 1))
         cross.npc.append(NPC("angels", "You made it! There is a small envelope resting at the base of the cross with your name written across the front. Go ahead, open it!", 1))
-        svfd.npc.append(NPC("cheif", "Now that’s what I call a successful first call! You’ve handled yourself incredibly well. I think you’ve got what it takes to join the Sewanee Volunteer Fire Department, one of the only student-run fire departments in the country! Head west from here to check out the library or south to get to All Saints Chapel.", 1))
+        svfd.npc.append(NPC("chief", "Now that’s what I call a successful first call! You’ve handled yourself incredibly well. I think you’ve got what it takes to join the Sewanee Volunteer Fire Department, one of the only student-run fire departments in the country! Head west from here to check out the library or south to get to All Saints Chapel.", 1))
 
         #add book
         quad.book = Book("notebook", "Your Quad task is simple. Slow down for a minute and solve the riddle of the day: What has many keys but can’t open a single lock?", 0)
-        desk.book = Book("books", "Well done! Now that you have sorted all the books by colors you need to take them to their respective floors. HINT: type the floor (basement, first or second) followed by the color of books you must take there (red, orange or yellow)", 0)
+        desk.book = Book("books", "Well done! Now that you have sorted all the books by colors you need to take them to their respective floors. HINT: type the floor (basement, first or second) followed by the color of the books you must take there (red, orange or yellow)", 0)
 
         #add bell
         breslin.bell = Bell("bell", 1)
@@ -231,14 +233,14 @@ class TextAdventure:
         desk.color = Color("yellow", "Correct! Make sure you brought books up to the fist floor and down to the basement. If you have finished all 3 go tell the librarian!", 1)
         
         #add item
-        benny.item = Item("key", "You walk through the front door into to the court yard surrounded by about 50 doors. You look at the key you were given and see your room number is 102. You spot a door marked with this number a little ways away", 0)
+        benny.item = Item("key", "You walk through the front door into to the court yard surrounded by about 50 doors. You look at the key you were given and see your room number is 102. You spot a door marked with this number a little ways away.", 0)
         room.item = Item("key", "You open the door and step in to your home for the next year! In the first room there are 2 desks and a bathroom which leads to your suitmate's room. You walk farther into your room and see a second room with 2 bed and 2 closets. You drop off your bags and head out for your next adventure. Go east to get back to Bishop's Common and get back to central campus!", 1)
 
         #add fire
-        johnson.fire = Fire("fire", "The water rushes through the hose, spraying across the building. Slowly, the flames begin to disappear until the last bit of smoke clears. The students outside cheer as the emergency comes to an end. Head back to the firestation, the cheif want to talk to you!")
+        johnson.fire = Fire("fire", "The water rushes through the hose, spraying across the building. Slowly, the flames begin to disappear until the last bit of smoke clears. The students outside cheer as the emergency comes to an end. Head back to the firestation, the chief want to talk to you!")
 
         #add envlope
-        cross.envlope = Envlope("envlope", "You rip open the envlope and open the letter inside which reveals this letter:", "Dear Alex,", "Congratulations! we are pleased to welcome you to the University of the South! We hope your journey across campus has given you a glimpse of what makes Sewanee so special. We look forward to welcoming you to the mountain and seeing all that you accomplish here. Welcome to Sewanee!")
+        cross.envlope = Envlope("envelope", "You rip open the envelope and open the letter inside which reveals this letter:", "Dear Alex,", "Congratulations! we are pleased to welcome you to the University of the South! We hope your journey across campus has given you a glimpse of what makes Sewanee so special. We look forward to welcoming you to the mountain and seeing all that you accomplish here. Welcome to Sewanee!")
         #add food
         homestyle.food.extend([
             Food("chicken"),
@@ -299,7 +301,7 @@ class TextAdventure:
         #add guess
         quad.guess = Guess("piano", 1, "Well done! If you havent yet go talk to my painter friend she'll help you find out where to go next")
         alley.guess = Guess("parrot", 1, "You got it! Enjoy Abo’s Alley! When you are ready to head out Breslin tower is to the west, the quad is northwest, All Saints Chapel is north and McClurg Dining hall is northeast.")
-        breslin.guess = Guess("1857", 0, "The doors creak open as you step foot inside the tower. You see an ornate spiral staircase that looks like it is going to break as soon as you put on foot on the first stair rung. The stairs look like they lead to a trapped door. You also see a bellman standing in the tower.")
+        breslin.guess = Guess("1857", 0, "The doors creak open as you step foot inside the tower. You see an ornate spiral staircase that looks like it is going to break as soon as you put one foot on the first stair rung. The stairs look like they lead to a trapped door. You also see a bellman standing in the tower.")
 
         self.current_room = chaple
         self.play_sound("organ")
@@ -319,11 +321,12 @@ class TextAdventure:
         self.say(f"Welcome to {self.current_room.name}")
         room = self.current_room.name
         self.say(f"Exits: {self.current_room.list_exits()}")
+        self.play_sound(self.current_room.enter_sound)
 
     def look(self):
         self.say(f"{self.current_room.description}")
         room = self.current_room.name
-        if self.current_room.description == "As you approach the Sewanee Volunteer Fire Department, you hear the sound of an alarm echoing through the station. Firefighters are rushing around, preparing to respond to an emergency. Before you can take a closer look, someone calls out to you, it's the Fire Chief. “Well, look what we have here! We could use an extra set of hands. We’ve just received a call about a fire at johnson hall. Head over there quick!":
+        if self.current_room.description == "As you approach the Sewanee Volunteer Fire Department, you hear the sound of an alarm echoing through the station. Firefighters are rushing around, preparing to respond to an emergency. Before you can take a closer look, someone calls out to you, it's the Fire Chief. “Well, look what we have here! We could use an extra set of hands. We’ve just received a call about a fire at Johnson Hall. Head over there quick!":
             self.play_sound("fire")
 
     def go(self, direction):
@@ -354,7 +357,7 @@ class TextAdventure:
                         self.say("Where angels watch from above, seek the towering symbol of faith overlooking the valley.")
                         self.play_sound("win")
             else:
-                self.say(f"There is no one with that name talk to here.")
+                self.say(f"There is no one with that name to talk to here.")
                 
 
     def take(self, name):
@@ -459,7 +462,7 @@ class TextAdventure:
     def ring(self, name):
        bell = self.current_room.bell
        if bell is not None and bell.name == name:
-            self.say("You scramble up the spiral stairs, even though they are supposedly safe they still wiggle as you walk up them. You see skinnier ropes and then one bigger one that looks like it connects to a huge bell so you give it a good tug. One you are done taking in the view from up here head north to get to bishop commons, southeast to get to Abo's Alley or east for the quad!")
+            self.say("You scramble up the spiral stairs, even though they are supposedly safe they still wiggle as you walk up them. You see skinnier ropes and then one bigger one that looks like it connects to a huge bell so you give it a good tug. Once you are done taking in the view from up here, head north to get to bishop commons, southeast to get to Abo's Alley or east for the quad!")
             self.play_sound("bell")
             self.score += bell.value
             if self.current_room.bell.value > 0:
@@ -535,7 +538,7 @@ class TextAdventure:
             self.take(words[1])
         elif command == "help":
             self.say("You can type this command at anytime and this menu will show up")
-            self.say("Commands: look (you will use this in every room), go DIRECTION, talk CHARACTER, read notebook, ring bell, take key, use key, fight fire, sort books, open envlope") 
+            self.say("Commands: look (you will use this in every room), go DIRECTION, talk CHARACTER, read notebook, ring bell, take key, use key, fight fire, sort books, open envelope") 
             self.say("To talk to a character type talk followed by their name ex: talk organist")
             self.say("When given a riddle to solve type guess and then enter your 'guess'")
             self.say("You will also use the go command to navigate McClurg, respond to the fire, get to the desk in the library and get to your dorm room")
