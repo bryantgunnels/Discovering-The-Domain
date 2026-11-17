@@ -207,17 +207,17 @@ class TextAdventure:
         johnson.add_neighbor("firestation", svfd)
 
         #add NPCs
-        chaple.npc.append(NPC("organist", "You’re finally awake. You’re in All Saints’ Chapel at Sewanee: the University of the South! This Chapel sits near the center of campus, so it’s a good place to get your bearings. There are four exits out of here: McClurg to the east, the Quad to the west, Abo's Ally to the south, and the firestation to the north; each place has a task for you to complete and you must complete all of the tasks.", 8))
+        chaple.npc.append(NPC("organist", "You’re finally awake. You’re in All Saints’ Chapel at Sewanee: the University of the South! This Chapel sits near the center of campus, so it’s a good place to get your bearings. There are four exits out of here: McClurg to the east, the Quad to the west, Abo's Ally to the south, and the firestation to the north; each place has a task for you to complete and you must complete all of the tasks.", 1))
         clurg.npc.append(NPC("jack", "Welcome to McClurg. This is Sewanee’s main dining hall. Campus is empty right now. Usually this place is packed. Since you’re here, I’ve got a challenge for you I’ll give you a meal to put together. You’ll need to find each station that has each part of the meal take one item from Homestyle, Pasta, Salad, and Vegan. Come back and talk to me when you have your meal and your McClurg task is complete. Heres a tip, always start at homestyle.", 0))
         soup.npc.append(NPC("jack", "Would you look at that! That’s quite the spread!! I love the variety from each line! To continue on your adventure head west to get back to All Saints Chapel, southwest to Abo's Alley or southeast to get to the cross", 1))
         quad.npc.append(NPC("professor", "Welcome to the Quad. People usually come out here to study, relax, or just take a break between classes. Your Quad task is simple. Slow down for a minute and solve the riddle of the day: What has many keys but can’t open a single lock? HINT: type guess and then your answer", 0))
         quad.npc.append(NPC("painter", "Hey there, welcome to the Quad. I’ve been here for a few hours working on my painting of Breslin Tower. Have you explored inside yet? If not, go have a look. It's an interesting place to the west. What dorm are you in? If you haven’t been to reslife go to bishops commons which is in the west of the library and north of Breslin.", 0))
         breslin.npc.append(NPC("bellman", "Welcome to Breslin Tower, trust me the stairs are not going to break. They may look like they are a thousand years old but they’ve been holding me up for the past 20 years. To get your achievement you have to ring the bell! ", 0))
-        bishop.npc.append(NPC("reslife", "Welcome to Sewanee! You are Alex Grant right? I've got your room key and student id right here! you will be living in Benidict Hall, or as most students call it Benny! First take your key and then head west to get to Benidict Hall!", 0))
+        bishop.npc.append(NPC("reslife", "Welcome to Sewanee! You are Alex Grant right? I've got your room key and student id right here! you will be living in Benedict Hall, or as most students call it Benny! First take your key and then head west to get to Benedict Hall!", 0))
         alley.npc.append(NPC("birdwatcher", "Hi there my name is Abby and I am a birdwatcher want to hear a riddle? I have wings but I’m not a plane. I can repeat what you say, but I am not a person. What am I?", 0))
         library.npc.append(NPC("librarian", "Hey there, welcome to the DuPont Library. I am so sorry this place looks like a tornado just came through here! Everyone had their midterm so everyone was studying here for either their exams or writing their papers! Do you mind helping me sort these by color? Everything is organized by color so no need to worry about the subject or content, you just need to know the rainbow! Why don’t you work on the pile on the reception desk? The way this works: Red: Basement, Orange: 1st Floor, and Yellow: 2nd Floor. Just bring the correct colored book to the right floor and once you're done check in with me. Head over to the desk to get started.", 0))
         desk.npc.append(NPC("librarian", "You did it and the Reception Desk looks so nice and clean now! Bishops Commons is to the West of the Library, and the Quad is South and the Fire Station is east.", 1))
-        cross.npc.append(NPC("angels", "You made it! There is a small envelope resting at the base of the cross with your name written across the front. Go ahead, open it!", 1))
+        cross.npc.append(NPC("angels", "Congratulations on completing all your achievements! There is a small envelope resting at the base of the cross with your name written across the front. Go ahead, open it!", 1))
         svfd.npc.append(NPC("chief", "Now that’s what I call a successful first call! You’ve handled yourself incredibly well. I think you’ve got what it takes to join the Sewanee Volunteer Fire Department, one of the only student-run fire departments in the country! Head west from here to check out the library or south to get to All Saints Chapel.", 1))
 
         #add book
@@ -302,15 +302,15 @@ class TextAdventure:
         quad.guess = Guess("piano", 1, "Well done! If you havent yet go talk to my painter friend she'll help you find out where to go next")
         alley.guess = Guess("parrot", 1, "You got it! Enjoy Abo’s Alley! When you are ready to head out Breslin tower is to the west, the quad is northwest, All Saints Chapel is north and McClurg Dining hall is northeast.")
         breslin.guess = Guess("1857", 0, "The doors creak open as you step foot inside the tower. You see an ornate spiral staircase that looks like it is going to break as soon as you put one foot on the first stair rung. The stairs look like they lead to a trapped door. You also see a bellman standing in the tower.")
-        chaple.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
-        clurg.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
-        homestyle.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
-        benny.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
-        room.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
-        svfd.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
-        bishop.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
-        library.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
-        desk.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        chaple.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
+        clurg.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
+        homestyle.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
+        benny.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
+        room.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
+        svfd.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
+        bishop.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
+        library.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
+        desk.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
 
 
         self.current_room = chaple
