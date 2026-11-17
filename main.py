@@ -3,7 +3,7 @@ from pathlib import Path
 import pygame
 
 # Change these settings to give your game its own look and feel.
-WIDTH, HEIGHT = 1450, 875
+WIDTH, HEIGHT = 1450, 874
 BASE_DIR = Path(__file__).parent
 ASSET_DIR = BASE_DIR / "assets"
 TEXT_DIR = BASE_DIR / "text"
@@ -338,7 +338,7 @@ class TextAdventure:
         room = self.current_room.name
         if self.current_room.description == "As you approach the Sewanee Volunteer Fire Department, you hear the sound of an alarm echoing through the station. Firefighters are rushing around, preparing to respond to an emergency. Before you can take a closer look, someone calls out to you, it's the Fire Chief. “Well, look what we have here! We could use an extra set of hands. We’ve just received a call about a fire at Johnson Hall. Head over there quick!":
             self.play_sound("fire")
-        if self.score <= 8 and self.current_room.description == "Welcome to the War Memorial Cross! This is the most beautiful place on the domain, so beautiful in fact it is said that angels dwell here, and a great place to watch the sunset overlooking the valley. There is no achievement here but remember this place you might want to come back!":
+        if self.score >= 8 and self.current_room.description == "Welcome to the War Memorial Cross! This is the most beautiful place on the domain, so beautiful in fact it is said that angels dwell here, and a great place to watch the sunset overlooking the valley. There is no achievement here but remember this place you might want to come back!":
             self.say("You made it! The Sewanee Angels are waiting, go talk to them!")
     def go(self, direction):
         destination = self.current_room.get_neighbor(direction)
