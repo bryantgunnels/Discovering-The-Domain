@@ -311,7 +311,7 @@ class TextAdventure:
         bishop.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
         library.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
         desk.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
-
+        cross.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angels!")
 
         self.current_room = chaple
         self.play_sound("organ")
