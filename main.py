@@ -189,6 +189,7 @@ class TextAdventure:
         alley.add_neighbor("northeast", clurg)
         cross.add_neighbor("nortwest", clurg)
         clurg.add_neighbor("homestyle", homestyle)
+        cross.add_neighbor("northwest", clurg)
         homestyle.add_neighbor("pasta", pasta)
         pasta.add_neighbor("vegan", vegan)
         vegan.add_neighbor("soup", soup)
@@ -537,10 +538,10 @@ class TextAdventure:
         elif command == "help":
             self.say("You can type this command at anytime and this menu will show up")
             self.say("Commands: look (you will use this in every room), go DIRECTION, talk CHARACTER, read notebook, ring bell, take key, use key, fight fire, sort books, open envlope") 
-            self.say("to talk to a character type talk followed by their name ex: talk organist")
-            self.say("when given a riddle to solve type guess and then enter your guess")
-            self.say("you will also use the go command to navigate McClurg, respond to the fire, get to the desk in the library and get to your doorm room")
-            self.say("each time you enter a room you will say the name and Exits: under it using the go command with any of these directions will allow you to go to a new room. Any exit that is not a direction is a part of the challange for that room and is also used with teh go command.")
+            self.say("To talk to a character type talk followed by their name ex: talk organist")
+            self.say("When given a riddle to solve type guess and then enter your 'guess'")
+            self.say("You will also use the go command to navigate McClurg, respond to the fire, get to the desk in the library and get to your dorm room")
+            self.say("Each time you enter a room you will see the name of the room and the key word Exits: after you will find a list of directions. Using the go command with any of these directions will allow you to go to a new room. Any exit that is not a direction is a part of the challange for that room and is also used with the go command.")
         elif command == "talk" and len(words) > 1:
             self.talk(words[1])
         elif command == "visit" and len(words) > 1:
