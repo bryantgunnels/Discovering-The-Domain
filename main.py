@@ -207,8 +207,8 @@ class TextAdventure:
         johnson.add_neighbor("firestation", svfd)
 
         #add NPCs
-        chaple.npc.append(NPC("organist", "You’re finally awake. You’re in All Saints’ Chapel at Sewanee: the University of the South! This Chapel sits near the center of campus, so it’s a good place to get your bearings. There are four exits out of here: McClurg to the east, the Quad to the west, Abo's Ally to the south, and the firestation to the north; each place has a task for you to complete and you must complete all of the tasks.", 1))
-        clurg.npc.append(NPC("jack", "Welcome to McClurg. This is Sewanee’s main dining hall. Campus is empty right now. Usually this place is packed. Since you’re here, I’ve got a challenge for you I’ll give you a meal to put together. You’ll need to find each station that has each part of the meal take one item from Homestyle, Pasta, Salad, and Vegan. Come back and talk to me when you have your meal and your McClurg task is complete. Heres a tip, always start at homestlye.", 0))
+        chaple.npc.append(NPC("organist", "You’re finally awake. You’re in All Saints’ Chapel at Sewanee: the University of the South! This Chapel sits near the center of campus, so it’s a good place to get your bearings. There are four exits out of here: McClurg to the east, the Quad to the west, Abo's Ally to the south, and the firestation to the north; each place has a task for you to complete and you must complete all of the tasks.", 8))
+        clurg.npc.append(NPC("jack", "Welcome to McClurg. This is Sewanee’s main dining hall. Campus is empty right now. Usually this place is packed. Since you’re here, I’ve got a challenge for you I’ll give you a meal to put together. You’ll need to find each station that has each part of the meal take one item from Homestyle, Pasta, Salad, and Vegan. Come back and talk to me when you have your meal and your McClurg task is complete. Heres a tip, always start at homestyle.", 0))
         soup.npc.append(NPC("jack", "Would you look at that! That’s quite the spread!! I love the variety from each line! To continue on your adventure head west to get back to All Saints Chapel, southwest to Abo's Alley or southeast to get to the cross", 1))
         quad.npc.append(NPC("professor", "Welcome to the Quad. People usually come out here to study, relax, or just take a break between classes. Your Quad task is simple. Slow down for a minute and solve the riddle of the day: What has many keys but can’t open a single lock? HINT: type guess and then your answer", 0))
         quad.npc.append(NPC("painter", "Hey there, welcome to the Quad. I’ve been here for a few hours working on my painting of Breslin Tower. Have you explored inside yet? If not, go have a look. It's an interesting place to the west. What dorm are you in? If you haven’t been to reslife go to bishops commons which is in the west of the library and north of Breslin.", 0))
@@ -302,6 +302,16 @@ class TextAdventure:
         quad.guess = Guess("piano", 1, "Well done! If you havent yet go talk to my painter friend she'll help you find out where to go next")
         alley.guess = Guess("parrot", 1, "You got it! Enjoy Abo’s Alley! When you are ready to head out Breslin tower is to the west, the quad is northwest, All Saints Chapel is north and McClurg Dining hall is northeast.")
         breslin.guess = Guess("1857", 0, "The doors creak open as you step foot inside the tower. You see an ornate spiral staircase that looks like it is going to break as soon as you put one foot on the first stair rung. The stairs look like they lead to a trapped door. You also see a bellman standing in the tower.")
+        chaple.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        clurg.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        homestyle.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        benny.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        room.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        svfd.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        bishop.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        library.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+        desk.guess = Guess("cross", 1, "Correct! Now head to the cross and talk to the angles")
+
 
         self.current_room = chaple
         self.play_sound("organ")
@@ -328,7 +338,8 @@ class TextAdventure:
         room = self.current_room.name
         if self.current_room.description == "As you approach the Sewanee Volunteer Fire Department, you hear the sound of an alarm echoing through the station. Firefighters are rushing around, preparing to respond to an emergency. Before you can take a closer look, someone calls out to you, it's the Fire Chief. “Well, look what we have here! We could use an extra set of hands. We’ve just received a call about a fire at Johnson Hall. Head over there quick!":
             self.play_sound("fire")
-
+        if self.score <= 8 and self.current_room.description == "Welcome to the War Memorial Cross! This is the most beautiful place on the domain, so beautiful in fact it is said that angels dwell here, and a great place to watch the sunset overlooking the valley. There is no achievement here but remember this place you might want to come back!":
+            self.say("You made it! The Sewanee Angels are waiting, go talk to them!")
     def go(self, direction):
         destination = self.current_room.get_neighbor(direction)
         if destination is None:
