@@ -538,11 +538,12 @@ class TextAdventure:
             self.take(words[1])
         elif command == "help":
             self.say("You can type this command at anytime and this menu will show up")
-            self.say("Commands: look (you will use this in every room), go DIRECTION, talk CHARACTER, read notebook, ring bell, take key, use key, fight fire, sort books, open envelope") 
+            self.say('Commands: "look" (you will use this in every room), "go DIRECTION", "talk CHARACTER", "read notebook", "ring bell", "take key", "use key", "fight fire", "sort books", "open envelope"') 
             self.say("To talk to a character type talk followed by their name ex: talk organist")
             self.say("When given a riddle to solve type guess and then enter your 'guess'")
             self.say("You will also use the go command to navigate McClurg, respond to the fire, get to the desk in the library and get to your dorm room")
-            self.say("Each time you enter a room you will see the name of the room and the key word Exits: after you will find a list of directions. Using the go command with any of these directions will allow you to go to a new room. Any exit that is not a direction is a part of the challange for that room and is also used with the go command.")
+            self.say("Each time you enter a room you will see the name of the room and the key word Exits: after you will find a list of directions. Using the go command with any of these directions will allow you to go to a new room.")
+            self.say("Any exit that is not a direction (ex: homestyle, johnson, desk, firestation) is a part of the challange for that room and is also used with the go command.")
         elif command == "talk" and len(words) > 1:
             self.talk(words[1])
         elif command == "visit" and len(words) > 1:
